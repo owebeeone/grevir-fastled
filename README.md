@@ -30,5 +30,6 @@ using App = ardo::ArduinoAvrApplication<Strip>;
 
 Two `LedStrip` modules in one `Application` fail with a FastLED resource
 conflict. `get()` returns the stored colour (the original static getter dropped
-the return). ParkLightsV2 stays under `extras/legacy` and is not the first
-Arduino example.
+the return). The `extras/legacy` ParkLightsV2 copy is a source reference;
+the current application port lives in the workspace's separate `parklights`
+repository.

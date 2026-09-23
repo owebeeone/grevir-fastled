@@ -14,12 +14,13 @@ target_link_libraries(grevir_fastled_compile PRIVATE grevir::fastled grevir::per
 target_compile_definitions(grevir_fastled_compile PRIVATE GREVIR_FASTLED_HOST_MOCK)
 set_target_properties(grevir_fastled_compile PROPERTIES CXX_EXTENSIONS OFF)
 
-if(NOT CMAKE_CXX_COMPILER_ID MATCHES "^(AppleClang|Clang|GNU)$")
-  message(FATAL_ERROR "FastLED claim probes currently require a Clang/GNU driver")
+if(NOT CMAKE_CXX_COMPILER_ID MATCHES "^(AppleClang|Clang|GNU|MSVC)$")
+  message(FATAL_ERROR "FastLED claim probes require a supported C++ compiler driver")
 endif()
 add_custom_target(grevir_fastled_claim_checks ALL
   COMMAND "${CMAKE_COMMAND}"
     "-DCXX=${CMAKE_CXX_COMPILER}"
+      "-DCOMPILER_ID=${CMAKE_CXX_COMPILER_ID}"
     "-DINCLUDE_DIRS=$<TARGET_PROPERTY:grevir_fastled_compile,INCLUDE_DIRECTORIES>"
     "-DCASE_SOURCE=${CMAKE_CURRENT_SOURCE_DIR}/claim_probe.cpp"
     "-DLOG_DIR=${CMAKE_CURRENT_BINARY_DIR}/claim-results"

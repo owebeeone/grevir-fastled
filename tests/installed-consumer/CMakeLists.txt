@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.20)
+project(grevir_fastled_consumer LANGUAGES CXX)
+find_package(grevir-fastled CONFIG REQUIRED)
+find_package(grevir-peripherals CONFIG REQUIRED)
+add_executable(grevir_fastled_consumer main.cpp)
+target_link_libraries(grevir_fastled_consumer PRIVATE grevir::fastled grevir::peripherals)
+target_compile_definitions(grevir_fastled_consumer PRIVATE GREVIR_FASTLED_HOST_MOCK)
+set_target_properties(grevir_fastled_consumer PROPERTIES CXX_EXTENSIONS OFF)

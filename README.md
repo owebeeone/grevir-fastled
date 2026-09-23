@@ -1,5 +1,15 @@
 # Grevir FastLED
 
+**Public API:** [Grevir FastLED](https://github.com/owebeeone/grevir-wz/blob/main/docs/api/fastled.md).
+See [installation](https://github.com/owebeeone/grevir-wz/blob/main/docs/install.md) and
+[supported platforms](https://github.com/owebeeone/grevir-wz/blob/main/docs/supported.md).
+The workspace `/docs` is the current user-facing contract; development
+checkpoints below are historical.
+
+FastLED strip integration with a singleton controller claim.
+
+## Development record (historical)
+
 FastLED strip module and exclusive controller claim, extracted from Ardoinus
 `ardOFastLED`. The unused time include is dropped. Pins are injected, typically
 `ardo::ExternalPin<N>` because FastLED owns GPIO setup.
